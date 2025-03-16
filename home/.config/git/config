@@ -5,7 +5,7 @@
 	path = ~/.config/git/sensyn-robotics.config
 [core]
 	editor = vim
-	hookspath = ~/.config/git/hooks
+	hooksPath = ~/.config/git/hooks
 [init]
 	defaultBranch = main
 [alias]
