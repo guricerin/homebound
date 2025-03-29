@@ -28,6 +28,21 @@ alias k = kubectl
 
 alias tf = terraform
 
+$env.config = {
+  keybindings: [
+    {
+      name: cd_fuzzy_ghq
+      modifier: control
+      keycode: char_g
+      mode: emacs
+      event: {
+        send: executehostcommand,
+        cmd: "cd (ghq list --full-path | fzf | decode utf-8 | str trim)"
+      }
+    }
+  ]
+}
+
 # starship: プロンプト改造
 ## ↓は最終行に書くこと
 mkdir ($nu.data-dir | path join "vendor/autoload")
