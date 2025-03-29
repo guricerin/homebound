@@ -31,12 +31,33 @@ alias tf = terraform
 $env.config = {
   keybindings: [
     {
+      name: fzf_history
+      modifier: control
+      keycode: char_r
+      mode: [emacs, vi_normal, vi_insert]
+      event: [
+        {
+          send: ExecuteHostCommand
+          cmd: "commandline edit --replace (
+            history
+              | get command
+              | reverse
+              | uniq
+              | str join (char -i 0)
+              | fzf --scheme=history --read0 --layout=reverse --height=90% -q (commandline)
+              | decode utf-8
+              | str trim
+            )"
+        }
+      ]
+    }
+    {
       name: cd_fuzzy_ghq
       modifier: control
       keycode: char_g
       mode: emacs
       event: {
-        send: executehostcommand,
+        send: ExecuteHostCommand,
         cmd: "cd (ghq list --full-path | fzf | decode utf-8 | str trim)"
       }
     }
