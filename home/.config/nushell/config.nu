@@ -17,6 +17,17 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
+alias l = ls -al
+alias g = git
+alias f = fzf
+
+alias d = docker
+alias dc = docker compose
+
+alias k = kubectl
+
+alias tf = terraform
+
 # starship: プロンプト改造
 ## ↓は最終行に書くこと
 mkdir ($nu.data-dir | path join "vendor/autoload")
