@@ -17,16 +17,28 @@
 # You can remove these comments if you want or leave
 # them for future reference.
 
-alias l = ls -al
-alias g = git
-alias f = fzf
+$env.PATH = (
+  $env.PATH
+  # my bin
+  | prepend ($env.HOME | path join "bin")
+  # Rust
+  | prepend ($env.HOME | path join ".cargo/bin")
+  | uniq
+)
 
-alias d = docker
-alias dc = docker compose
+# config
+$env.XDG_CONFIG_HOME = $env.HOME | path join ".config"
 
-alias k = kubectl
+# fzf
+$env.FZF_DEFAULT_COMMAND = 'fd -H -E .git'
+## 検索結果はターミナルの下側に表示させる
+$env.FZF_DEFAULT_OPTS = "--reverse --height=90%"
+## CTRL + T でカレントディレクトリ以下のファイルをプレビュー表示しつつ曖昧検索
+$env.FZF_CTRL_T_COMMAND = 'fd --type f -H -E .git'
+$env.FZF_CTRL_T_OPTS = '--preview "head -100 {}"'
 
-alias tf = terraform
+# Go
+$env.GOPATH = (go env GOPATH)
 
 $env.config = {
   keybindings: [
@@ -63,6 +75,14 @@ $env.config = {
     }
   ]
 }
+
+alias l = ls -al
+alias g = git
+alias f = fzf
+alias d = docker
+alias dc = docker compose
+alias k = kubectl
+alias tf = terraform
 
 # starship: プロンプト改造
 ## ↓は最終行に書くこと
