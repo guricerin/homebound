@@ -16,6 +16,7 @@
 #
 # You can remove these comments if you want or leave
 # them for future reference.
+# `source $nu.config-path` can reload this file.
 
 $env.PATH = (
   $env.PATH
