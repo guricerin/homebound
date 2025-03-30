@@ -3,6 +3,8 @@
 	email = chanbo1e9@gmail.com
 [includeIf "gitdir:~/workspace/github.com/sensyn-robotics/"]
 	path = ~/.config/git/sensyn-robotics.config
+[ghq]
+  root = ~/workspace/github.com
 [core]
 	editor = vim
 	hooksPath = ~/.config/git/hooks
