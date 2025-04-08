@@ -50,16 +50,7 @@ git clone git@github.com:guricerin/homebound.git
 ### Install tools
 
 ```sh
-brew install \
-  zsh \
-  sheldon \
-  fzf \
-  fd \
-  starship \
-  pre-commit \
-  gitleaks \
-  nushell
-$(brew --prefix)/opt/fzf/install
+./path/to/homebound/scripts/depends.sh
 ```
 
 ### Set zsh as default shell
