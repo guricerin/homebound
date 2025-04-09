@@ -16,6 +16,8 @@ set -gx FZF_DEFAULT_OPTS "--reverse --height=90%"
 ## CTRL + T でカレントディレクトリ以下のファイルをプレビュー表示しつつ曖昧検索
 set -gx FZF_CTRL_T_COMMAND "fd --type f -H -E .git"
 set -gx FZF_CTRL_T_OPTS '--preview "head -100 {}"'
+## CTRL + G でリポジトリ移動
+bind ctrl-g 'cd (ghq list --full-path | fzf); commandline --function repaint'
 
 # kubectl
 kubectl completion fish | source
