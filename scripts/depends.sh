@@ -9,5 +9,6 @@ brew install \
   starship \
   pre-commit \
   gitleaks \
+  fish \
   nushell
 $(brew --prefix)/opt/fzf/install
