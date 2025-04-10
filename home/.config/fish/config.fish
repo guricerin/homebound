@@ -4,10 +4,10 @@ if not status --is-interactive
   return 0
 end
 
-if test (uname -r) = "*-microsoft-standard-WSL2"
+if string match -q '*-microsoft-standard-WSL2' (uname -r)
   echo "This is wsl2"
   # wsl2 default browser
-  set -gx BROWSER "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+  set -gx BROWSER "/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe"
   # linuxbrew
   fish_add_path /home/linuxbrew/.linuxbrew/bin
 else if test (uname -s) = "Darwin"
