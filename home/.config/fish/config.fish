@@ -1,3 +1,15 @@
+if test (uname -r) = "*-microsoft-standard-WSL2"
+  echo "This is wsl2"
+  # wsl2 default browser
+  set -gx BROWSER "/mnt/c/Program Files/Mozilla Firefox/firefox.exe"
+  # linuxbrew
+  fish_add_path /home/linuxbrew/.linuxbrew/bin
+else if test (uname -s) = "Darwin"
+  echo "This is macos"
+  # homebrew
+  eval (/opt/homebrew/bin/brew shellenv)
+end
+
 # PATH を通す際は fish_add_path を使用するのがよい
 # my bin
 fish_add_path $HOME/bin
