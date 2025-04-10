@@ -1,3 +1,9 @@
+if not status --is-interactive
+  # Ctrl + R などの際に fish は内部的に新たなシェルを起動する
+  # その場合はいちいち reload する必要はない
+  return 0
+end
+
 if test (uname -r) = "*-microsoft-standard-WSL2"
   echo "This is wsl2"
   # wsl2 default browser
