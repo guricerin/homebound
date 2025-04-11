@@ -40,6 +40,9 @@ bind ctrl-g 'cd (ghq list --full-path | fzf); commandline --function repaint'
 # kubectl
 kubectl completion fish | source
 
+# helm
+helm completion fish | source
+
 # Go
 set -gx GOPATH (go env GOPATH)
 
