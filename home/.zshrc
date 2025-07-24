@@ -74,17 +74,17 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 source "$HOME/.bun/_bun"
 
 # alias
-alias l='ls -alF'
+abbr l='ls -alF'
 # ファイル操作前に確認する
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
-alias g='git'
-alias f='fzf'
-alias d='docker'
-alias dc='docker compose'
-alias k='kubectl'
-alias tf='terraform'
+abbr rm='rm -i'
+abbr mv='mv -i'
+abbr cp='cp -i'
+abbr g='git'
+abbr f='fzf'
+abbr d='docker'
+abbr dc='docker compose'
+abbr k='kubectl'
+abbr tf='terraform'
 
 # starship: プロンプト改造
 ## ↓は最終行に書くこと

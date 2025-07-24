@@ -23,3 +23,7 @@ github = "zsh-users/zsh-syntax-highlighting"
 
 [plugins.jq-zsh-plugin]
 github = "reegnz/jq-zsh-plugin"
+
+# fishのabbr (aliasを元コマンドに展開する)
+[plugins.zsh-abbr]
+github = "olets/zsh-abbr"
