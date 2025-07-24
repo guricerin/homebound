@@ -48,7 +48,6 @@ elif [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # fzf (via brew): 曖昧検索
-alias f='fzf'
 source <(fzf --zsh)
 ## .gitディレクトリを除外し、カレントディレクトリ以下のディレクトリとファイルを再帰的に曖昧検索
 export FZF_DEFAULT_COMMAND='fd -H -E .git'
@@ -58,17 +57,8 @@ export FZF_DEFAULT_OPTS="--reverse --height=90%"
 export FZF_CTRL_T_COMMAND='fd --type f -H -E .git'
 export FZF_CTRL_T_OPTS='--preview "head -100 {}"'
 
-# docker
-alias d='docker'
-alias dc='docker compose'
-
-# kubernetes
-alias k='kubectl'
-## kubectl completion
+# kubectl
 source <(kubectl completion zsh)
-
-# terraform
-alias tf='terraform'
 
 # my-bin
 export PATH="$HOME/bin:$PATH"
@@ -88,6 +78,13 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 ## bun completions
 source "$HOME/.bun/_bun"
+
+# alias
+alias f='fzf'
+alias d='docker'
+alias dc='docker compose'
+alias k='kubectl'
+alias tf='terraform'
 
 # starship: プロンプト改造
 ## ↓は最終行に書くこと
