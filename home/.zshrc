@@ -22,18 +22,9 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
-alias l='ls -alF'
-
-# ファイル操作前に確認する
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
 
 # config
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# git
-alias g='git'
 
 if [[ "$(uname -r)" == *-microsoft-standard-WSL2 ]]; then
   echo "This is wsl2"
@@ -46,6 +37,10 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   # homebrew
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+# sheldon (via brew): shell用プラグインマネージャー
+## load plugins
+eval "$(sheldon source)"
 
 # fzf (via brew): 曖昧検索
 source <(fzf --zsh)
@@ -60,12 +55,11 @@ export FZF_CTRL_T_OPTS='--preview "head -100 {}"'
 # kubectl
 source <(kubectl completion zsh)
 
+# helm
+source <(helm completion zsh)
+
 # my-bin
 export PATH="$HOME/bin:$PATH"
-
-# sheldon (via brew): shell用プラグインマネージャー
-## load plugins
-eval "$(sheldon source)"
 
 # Go (via brew)
 export GOPATH="$(go env GOPATH)"
@@ -80,6 +74,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 source "$HOME/.bun/_bun"
 
 # alias
+alias l='ls -alF'
+# ファイル操作前に確認する
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+alias g='git'
 alias f='fzf'
 alias d='docker'
 alias dc='docker compose'
