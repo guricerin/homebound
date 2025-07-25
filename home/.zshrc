@@ -84,9 +84,17 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 ## bun completions
 source "$HOME/.bun/_bun"
 
-# alias
-abbr l='ls -alF'
-# ファイル操作前に確認する
+# zsh-abbr: alias と違って、元のコマンドへと展開してくれる
+## `*`以降の文字で連結した直後の略語も展開する
+ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
+  '*& '
+  '*&& '
+  '*| '
+  '*|| '
+  '*; '
+)
+abbr -S l='ls -alF --color=auto'
+## ファイル操作前に確認する
 abbr rm='rm -i'
 abbr mv='mv -i'
 abbr cp='cp -i'
