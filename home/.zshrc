@@ -84,6 +84,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 ## bun completions
 source "$HOME/.bun/_bun"
 
+# alias
+alias l='ls -alF --color=auto'
+## ファイル操作前に確認する
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
 # zsh-abbr: alias と違って、元のコマンドへと展開してくれる
 ## `*`以降の文字で連結した直後の略語も展開する
 ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
@@ -93,17 +100,12 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
   '*|| '
   '*; '
 )
-abbr -S l='ls -alF --color=auto'
-## ファイル操作前に確認する
-abbr rm='rm -i'
-abbr mv='mv -i'
-abbr cp='cp -i'
-abbr g='git'
-abbr f='fzf'
-abbr d='docker'
-abbr dc='docker compose'
-abbr k='kubectl'
-abbr tf='terraform'
+abbr -S g='git' >> /dev/null
+abbr -S f='fzf' >> /dev/null
+abbr -S d='docker' >> /dev/null
+abbr -S dc='docker compose' >> /dev/null
+abbr -S k='kubectl' >> /dev/null
+abbr -S tf='terraform' >> /dev/null
 
 # starship: プロンプト改造
 ## ↓は最終行に書くこと

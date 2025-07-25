@@ -53,17 +53,9 @@ git clone git@github.com:guricerin/homebound.git
 ./path/to/homebound/scripts/depends.sh
 ```
 
-### Set fish as default shell
+### Set zsh as default shell
 
 ```sh
-echo `which fish` | sudo tee -a /etc/shells
-chsh -s `which fish`
+echo `which zsh` | sudo tee -a /etc/shells
+chsh -s `which zsh`
 ```
-
-### Reload fish config
-
-```sh
-reload
-```
-
-see: [reload.fish](home/.config/fish/functions/reload.fish)
