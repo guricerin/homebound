@@ -56,7 +56,7 @@ function ghq-fzf-cd() {
   local dir
   dir=$(ghq list --full-path | fzf)
   if [[ -n "$dir" ]]; then
-    cd "$dir" || return
+    cd "$dir" || { echo "Error: Failed to change directory to '$dir'"; return; }
     zle reset-prompt
   fi
 }
