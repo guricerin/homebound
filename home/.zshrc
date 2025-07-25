@@ -22,18 +22,9 @@ if [ -x /usr/bin/dircolors ]; then
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
 fi
-alias l='ls -alF'
-
-# ファイル操作前に確認する
-alias rm='rm -i'
-alias mv='mv -i'
-alias cp='cp -i'
 
 # config
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# git
-alias g='git'
 
 if [[ "$(uname -r)" == *-microsoft-standard-WSL2 ]]; then
   echo "This is wsl2"
@@ -47,8 +38,11 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# sheldon (via brew): shell用プラグインマネージャー
+## load plugins
+eval "$(sheldon source)"
+
 # fzf (via brew): 曖昧検索
-alias f='fzf'
 source <(fzf --zsh)
 ## .gitディレクトリを除外し、カレントディレクトリ以下のディレクトリとファイルを再帰的に曖昧検索
 export FZF_DEFAULT_COMMAND='fd -H -E .git'
@@ -57,25 +51,26 @@ export FZF_DEFAULT_OPTS="--reverse --height=90%"
 ## CTRL + T でカレントディレクトリ以下のファイルをプレビュー表示しつつ曖昧検索
 export FZF_CTRL_T_COMMAND='fd --type f -H -E .git'
 export FZF_CTRL_T_OPTS='--preview "head -100 {}"'
+# Ctrl + G で リポジトリ移動
+function ghq-fzf-cd() {
+  local dir
+  dir=$(ghq list --full-path | fzf)
+  if [[ -n "$dir" ]]; then
+    cd "$dir" || { echo "Error: Failed to change directory to '$dir'"; return; }
+    zle reset-prompt
+  fi
+}
+zle -N ghq-fzf-cd
+bindkey '^G' ghq-fzf-cd
 
-# docker
-alias d='docker'
-alias dc='docker compose'
-
-# kubernetes
-alias k='kubectl'
-## kubectl completion
+# kubectl
 source <(kubectl completion zsh)
 
-# terraform
-alias tf='terraform'
+# helm
+source <(helm completion zsh)
 
 # my-bin
 export PATH="$HOME/bin:$PATH"
-
-# sheldon (via brew): shell用プラグインマネージャー
-## load plugins
-eval "$(sheldon source)"
 
 # Go (via brew)
 export GOPATH="$(go env GOPATH)"
@@ -88,6 +83,27 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 ## bun completions
 source "$HOME/.bun/_bun"
+
+# zsh-abbr: alias と違って、元のコマンドへと展開してくれる
+## `*`以降の文字で連結した直後の略語も展開する
+ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
+  '*& '
+  '*&& '
+  '*| '
+  '*|| '
+  '*; '
+)
+abbr -S l='ls -alF --color=auto'
+## ファイル操作前に確認する
+abbr rm='rm -i'
+abbr mv='mv -i'
+abbr cp='cp -i'
+abbr g='git'
+abbr f='fzf'
+abbr d='docker'
+abbr dc='docker compose'
+abbr k='kubectl'
+abbr tf='terraform'
 
 # starship: プロンプト改造
 ## ↓は最終行に書くこと
