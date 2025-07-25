@@ -51,6 +51,17 @@ export FZF_DEFAULT_OPTS="--reverse --height=90%"
 ## CTRL + T でカレントディレクトリ以下のファイルをプレビュー表示しつつ曖昧検索
 export FZF_CTRL_T_COMMAND='fd --type f -H -E .git'
 export FZF_CTRL_T_OPTS='--preview "head -100 {}"'
+# Ctrl + G で リポジトリ移動
+function ghq-fzf-cd() {
+  local dir
+  dir=$(ghq list --full-path | fzf)
+  if [[ -n "$dir" ]]; then
+    cd "$dir" || return
+    zle reset-prompt
+  fi
+}
+zle -N ghq-fzf-cd
+bindkey '^G' ghq-fzf-cd
 
 # kubectl
 source <(kubectl completion zsh)
