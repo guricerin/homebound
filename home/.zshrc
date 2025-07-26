@@ -105,6 +105,7 @@ ABBR_REGULAR_ABBREVIATION_GLOB_PREFIXES+=(
   '*|| '
   '*; '
 )
+abbr -S wh='which' >> /dev/null
 abbr -S g='git' >> /dev/null
 abbr -S f='fzf' >> /dev/null
 abbr -S d='docker' >> /dev/null
