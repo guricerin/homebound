@@ -39,8 +39,13 @@ elif [[ "$(uname)" == "Darwin" ]]; then
 fi
 
 # sheldon (via brew): shell用プラグインマネージャー
+## https://github.com/rossmacarthur/sheldon
 ## load plugins
 eval "$(sheldon source)"
+
+# mise: バージョン管理ツール
+## https://github.com/jdx/mise
+eval "$(~/.local/bin/mise activate zsh)"
 
 # fzf (via brew): 曖昧検索
 source <(fzf --zsh)
@@ -108,5 +113,6 @@ abbr -S k='kubectl' >> /dev/null
 abbr -S tf='terraform' >> /dev/null
 
 # starship: プロンプト改造
+## https://starship.rs/
 ## ↓は最終行に書くこと
 eval "$(starship init zsh)"
