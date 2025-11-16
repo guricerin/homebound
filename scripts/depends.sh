@@ -6,9 +6,12 @@ brew install \
   fzf \
   fd \
   ripgrep \
+  bat \
   starship \
   pre-commit \
   gitleaks \
-  fish \
+  gh \
+  ghq \
+  mise \
   nushell
 $(brew --prefix)/opt/fzf/install
