@@ -10,6 +10,7 @@ brew install \
   starship \
   pre-commit \
   gitleaks \
+  gh \
   ghq \
   mise \
   nushell
