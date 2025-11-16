@@ -45,7 +45,7 @@ eval "$(sheldon source)"
 
 # mise: バージョン管理ツール
 ## https://github.com/jdx/mise
-eval "$(~/.local/bin/mise activate zsh)"
+eval "$(mise activate zsh)"
 
 # fzf (via brew): 曖昧検索
 source <(fzf --zsh)
