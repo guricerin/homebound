@@ -8,6 +8,7 @@
 ### Install depends
 
 ```sh
+sudo apt update
 sudo apt install build-essential procps curl file git
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
@@ -20,6 +21,7 @@ sudo apt install build-essential procps curl file git
 ```sh
 mkdir -p ~/.ssh/keys/github
 ssh-keygen -t ed25519 -f ~/.ssh/keys/github/id_ed25519
+cp ~/.ssh/keys/github/id_ed25519 ~/.ssh/
 cat ~/.ssh/keys/github/id_ed25519.pub
 # paste pub-key to GitHub -> Settings -> SSH and GPG keys -> SSH keys
 ```
