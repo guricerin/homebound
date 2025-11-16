@@ -4,7 +4,7 @@
 [includeIf "gitdir:~/workspace/github.com/sensyn-robotics/"]
 	path = ~/.config/git/sensyn-robotics.config
 [ghq]
-	root = ~/workspace/github.com
+	root = ~/workspace
 [core]
 	editor = vim
 	hooksPath = ~/.config/git/hooks
