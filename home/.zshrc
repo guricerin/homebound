@@ -90,11 +90,11 @@ fi
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # bun
-if command -v bun >/dev/null 2>&1; then
+if [ -d "$HOME/.bun" ]; then
   export BUN_INSTALL="$HOME/.bun"
   export PATH="$BUN_INSTALL/bin:$PATH"
   ## bun completions
-  source "$HOME/.bun/_bun"
+  [ -f "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 fi
 
 # alias
