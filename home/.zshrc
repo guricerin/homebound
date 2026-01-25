@@ -38,6 +38,9 @@ elif [[ "$(uname)" == "Darwin" ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# my-bin
+export PATH="$HOME/bin:$PATH"
+
 # sheldon (via brew): shell用プラグインマネージャー
 ## https://github.com/rossmacarthur/sheldon
 ## load plugins
@@ -69,25 +72,30 @@ zle -N ghq-fzf-cd
 bindkey '^G' ghq-fzf-cd
 
 # kubectl
-source <(kubectl completion zsh)
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+fi
 
 # helm
-source <(helm completion zsh)
-
-# my-bin
-export PATH="$HOME/bin:$PATH"
+if command -v helm >/dev/null 2>&1; then
+  source <(helm completion zsh)
+fi
 
 # Go (via brew)
-export GOPATH="$(go env GOPATH)"
+if command -v go >/dev/null 2>&1; then
+  export GOPATH="$(go env GOPATH)"
+fi
 
 # Rust (via rustup)
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-## bun completions
-source "$HOME/.bun/_bun"
+if command -v bun >/dev/null 2>&1; then
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+  ## bun completions
+  source "$HOME/.bun/_bun"
+fi
 
 # alias
 alias l='ls -alF --color=auto'
