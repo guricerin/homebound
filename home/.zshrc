@@ -75,6 +75,8 @@ bindkey '^G' ghq-fzf-cd
 if command -v kubectl >/dev/null 2>&1; then
   source <(kubectl completion zsh)
 fi
+# krew: k8s plugin manager (via brew)
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # helm
 if command -v helm >/dev/null 2>&1; then
